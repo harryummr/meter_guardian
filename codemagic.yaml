@@ -1,0 +1,14 @@
+workflows:
+  android-workflow:
+    name: Meter Guardian Android Build
+    environment:
+      flutter: stable
+    scripts:
+      - name: Get packages
+        script: |
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release --android-skip-build-dependency-validation
+    artifacts:
+      - build/app/outputs/**/*.apk
